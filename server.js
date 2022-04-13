@@ -28,4 +28,6 @@ app.post("/", upload, (req, res, _next) => {
   res.status(200).json(req.file);
 });
 
+app.use("/images", express.static("./images")); // https://stackoverflow.com/a/44561891
+
 app.listen(PORT);
