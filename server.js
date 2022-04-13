@@ -26,4 +26,4 @@ app.post("/", upload, (req, res, _next) => {
   res.status(200).json(req.file);
 });
 
-app.listen(3000);
+app.listen(8080);
