@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const multer = require("multer");
 
+const PORT = process.env.PORT || 3000 // https://stackoverflow.com/a/21873049
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./images");
@@ -26,4 +28,4 @@ app.post("/", upload, (req, res, _next) => {
   res.status(200).json(req.file);
 });
 
-app.listen(8080);
+app.listen(PORT);
