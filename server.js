@@ -3,13 +3,14 @@ const path = require("path");
 const multer = require("multer");
 
 const PORT = process.env.PORT || 3000 // https://stackoverflow.com/a/21873049
+const randomFileName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + ".png";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./images");
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    cb(null, randomFileName);
   },
 });
 const upload = multer({ storage: storage }).single("image");
