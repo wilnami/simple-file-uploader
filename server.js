@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const multer = require("multer");
+const cors = require("cors")
 
 const PORT = process.env.PORT || 3000 // https://stackoverflow.com/a/21873049
 const randomFileName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + ".png";
@@ -15,6 +16,8 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage }).single("image");
 const app = express();
+
+app.use(cors())
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/index.html"));
